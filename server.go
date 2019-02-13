@@ -5,6 +5,7 @@ import (
 	"github.com/Deansquirrel/goClientManager/global"
 	"github.com/Deansquirrel/goClientManager/webServer"
 	log "github.com/Deansquirrel/goToolLog"
+	"time"
 )
 
 func main() {
@@ -27,4 +28,5 @@ func main() {
 	ws := webServer.NewWebServer(8000)
 	ws.StartWebService()
 	//==================================================================================================================
+	time.Sleep(time.Second * 15)
 }
