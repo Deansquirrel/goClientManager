@@ -1,6 +1,7 @@
 package router
 
 import (
+	log "github.com/Deansquirrel/goToolLog"
 	"github.com/kataras/iris"
 )
 
@@ -47,30 +48,8 @@ func clientInfoInfoHandler(ctx iris.Context) {
 	if err != nil {
 		ctx.StatusCode(iris.StatusBadRequest)
 		_, _ = ctx.WriteString(GetErrReturn(err.Error()))
-		//_,_ = ctx.WriteString(err.Error())
 	} else {
-		_, _ = ctx.WriteString(GetErrReturn("OK"))
+		log.Debug(info.OsInfo.Type)
+		_, _ = ctx.WriteString(GetMsgReturn("OK"))
 	}
-	//_,_ = ctx.Writef("Received: %#+v\n",info)
-
-	//body := ctx.Request().Body
-	//defer func() {
-	//	_ = body.Close()
-	//}()
-	//b, err := ioutil.ReadAll(body)
-	//if err != nil {
-	//	msg := "读取请求内容时遇到错误"
-	//	log.Error(msg + err.Error())
-	//	_, err = ctx.WriteString(GetErrReturn(msg))
-	//	if err != nil {
-	//		log.Error(err.Error())
-	//	}
-	//	return
-	//}
-	//log.Debug(string(b))
-	//_, err = ctx.WriteString(GetMsgReturn("Complete"))
-	//if err != nil {
-	//	log.Error(err.Error())
-	//}
-	//return
 }

@@ -17,7 +17,7 @@ func GetMsgReturn(msg string) string {
 	}
 	rb, err := json.Marshal(rd)
 	if err != nil {
-		return fmt.Sprintf(FormatErr, msg)
+		return fmt.Sprintf(FormatMsg, msg)
 	}
 	return string(rb)
 }
