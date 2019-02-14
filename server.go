@@ -1,11 +1,11 @@
 package main
 
 import (
+	"context"
 	"github.com/Deansquirrel/goClientManager/common"
 	"github.com/Deansquirrel/goClientManager/global"
 	"github.com/Deansquirrel/goClientManager/webServer"
 	log "github.com/Deansquirrel/goToolLog"
-	"time"
 )
 
 func main() {
@@ -21,12 +21,15 @@ func main() {
 		log.Error("刷新配置时遇到错误：" + err.Error())
 		return
 	}
+	global.Ctx, global.Cancel = context.WithCancel(context.Background())
 	//==================================================================================================================
-	log.Info("程序启动")
-	defer log.Info("程序退出")
+	log.Warn("程序启动")
+	defer log.Warn("程序退出")
 	//==================================================================================================================
 	ws := webServer.NewWebServer(8000)
 	ws.StartWebService()
 	//==================================================================================================================
-	time.Sleep(time.Second * 15)
+	select {
+	case <-global.Ctx.Done():
+	}
 }
