@@ -105,6 +105,7 @@ func (ws *webServer) irisStop(app *iris.Application) {
 
 //校验SysConfig中iris日志级别设置
 func (ws *webServer) checkIrisLogLevel(level string) string {
+	level = strings.ToLower(level)
 	switch level {
 	case "debug", "info", "warn", "error":
 		return level

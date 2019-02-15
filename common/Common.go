@@ -2,14 +2,15 @@ package common
 
 import (
 	"github.com/BurntSushi/toml"
-	"github.com/Deansquirrel/go-tool"
 	"github.com/Deansquirrel/goClientManager/object"
 	"github.com/Deansquirrel/goToolCommon"
 	log "github.com/Deansquirrel/goToolLog"
+	"strings"
 )
 
+//获取配置
 func GetSysConfig(fileName string) (*object.SysConfig, error) {
-	path, err := go_tool.GetCurrPath()
+	path, err := goToolCommon.GetCurrPath()
 	if err != nil {
 		return nil, err
 	}
@@ -31,8 +32,9 @@ func GetSysConfig(fileName string) (*object.SysConfig, error) {
 	return &config, nil
 }
 
+//刷新配置
 func RefreshConfig(config object.SysConfig) error {
-	setLogLevel(config.Total.LogLevel)
+	setLogLevel(strings.ToLower(config.Total.LogLevel))
 	setStdOut(config.Total.StdOut)
 	return nil
 }
