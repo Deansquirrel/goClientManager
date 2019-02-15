@@ -10,13 +10,14 @@ import (
 
 func main() {
 	//==================================================================================================================
-	config, err := common.GetSysConfig("server.toml")
+	config, err := common.GetServerConfig("server.toml")
 	if err != nil {
 		log.Error("加载配置文件时遇到错误：" + err.Error())
 		return
 	}
-	global.SysConfig = config
-	err = common.RefreshConfig(*global.SysConfig)
+	config.FormatConfig()
+	global.ServerConfig = config
+	err = common.RefreshServerConfig(*global.ServerConfig)
 	if err != nil {
 		log.Error("刷新配置时遇到错误：" + err.Error())
 		return
@@ -26,7 +27,7 @@ func main() {
 	log.Warn("程序启动")
 	defer log.Warn("程序退出")
 	//==================================================================================================================
-	ws := webServer.NewWebServer(8000)
+	ws := webServer.NewWebServer(global.ServerConfig.Total.Port)
 	ws.StartWebService()
 	//==================================================================================================================
 	select {

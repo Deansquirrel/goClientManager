@@ -105,7 +105,6 @@ func (ws *webServer) irisStop(app *iris.Application) {
 
 //校验SysConfig中iris日志级别设置
 func (ws *webServer) checkIrisLogLevel(level string) string {
-	level = strings.ToLower(level)
 	switch level {
 	case "debug", "info", "warn", "error":
 		return level
@@ -116,7 +115,7 @@ func (ws *webServer) checkIrisLogLevel(level string) string {
 
 //设置iris日志级别
 func (ws *webServer) setIrisLogLevel(app *iris.Application) {
-	app.Logger().SetLevel(ws.checkIrisLogLevel(global.SysConfig.Iris.LogLevel))
+	app.Logger().SetLevel(ws.checkIrisLogLevel(global.ServerConfig.Iris.LogLevel))
 }
 
 //设置iris日志时间格式
@@ -164,7 +163,7 @@ func (ws *webServer) reSetLogFile(app *iris.Application) {
 	}
 	if w != nil {
 		app.Logger().SetOutput(w)
-		if global.SysConfig.Total.StdOut {
+		if global.ServerConfig.Total.StdOut {
 			app.Logger().AddOutput(os.Stdout)
 		}
 		log.Debug("reSetLogFile")

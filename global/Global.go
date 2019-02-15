@@ -5,6 +5,7 @@ import (
 	"github.com/Deansquirrel/goClientManager/object"
 )
 
-var SysConfig *object.SysConfig
+var ServerConfig *object.ServerConfig
+var ClientConfig *object.ClientConfig
 var Ctx context.Context
 var Cancel func()
