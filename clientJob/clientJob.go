@@ -97,7 +97,7 @@ func (cj *clientJob) sendData(data []byte, url string) {
 		log.Warn("读取http返回数据时发生错误：" + err.Error())
 		return
 	}
-	log.Info(string(rData))
+	log.Debug(string(rData))
 	//============================================================================
 }
 

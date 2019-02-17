@@ -28,9 +28,9 @@ func clientInfoInfoHandler(ctx iris.Context) {
 
 	b, err := json.Marshal(info)
 	if err != nil {
-		log.Info(err.Error())
+		log.Error(err.Error())
 	} else {
-		log.Info(string(b))
+		log.Debug(string(b))
 	}
 	_, _ = ctx.WriteString(GetMsgReturn("OK"))
 }
