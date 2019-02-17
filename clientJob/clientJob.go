@@ -102,5 +102,5 @@ func (cj *clientJob) sendData(data []byte, url string) {
 }
 
 func (cj *clientJob) getUrl() string {
-	return global.ClientConfig.Total.ServerUrl + "/ClientInfo" + "/Info"
+	return global.ClientConfig.Config.ServerUrl + "/ClientInfo" + "/Info"
 }

@@ -2,10 +2,10 @@ package global
 
 import (
 	"context"
-	"github.com/Deansquirrel/goClientManager/object"
+	"github.com/Deansquirrel/goClientManager/config"
 )
 
-var ServerConfig *object.ServerConfig
-var ClientConfig *object.ClientConfig
+var ServerConfig *config.ServerConfig
+var ClientConfig *config.ClientConfig
 var Ctx context.Context
 var Cancel func()

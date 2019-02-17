@@ -27,7 +27,7 @@ func main() {
 	log.Warn("程序启动")
 	defer log.Warn("程序退出")
 	//==================================================================================================================
-	ws := webServer.NewWebServer(global.ServerConfig.Total.Port)
+	ws := webServer.NewWebServer(global.ServerConfig.Iris.Port)
 	ws.StartWebService()
 	//==================================================================================================================
 	select {

@@ -27,11 +27,11 @@ func main() {
 	log.Warn("程序启动")
 	defer log.Warn("程序退出")
 	//==================================================================================================================
-	if config.Total.ServerUrl == "" {
+	if config.Config.ServerUrl == "" {
 		log.Warn("服务端地址不能为空")
 		return
 	}
-	cj := clientJob.NewClientJob(config.Total.Interval)
+	cj := clientJob.NewClientJob(config.Config.Interval)
 	cj.StartClientJob()
 	//==================================================================================================================
 	select {
