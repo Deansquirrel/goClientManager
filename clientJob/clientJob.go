@@ -47,13 +47,16 @@ func (cj *clientJob) worker() {
 func (cj *clientJob) getClientInfo() *object.ClientInfo {
 	clientInfo := object.ClientInfo{}
 	clientInfo.OsInfo.Type = goToolEnvironment.GetOsType()
-	clientInfo.OsInfo.Name = goToolEnvironment.GetOsName()
-	osVer, err := goToolEnvironment.GetOsVer()
-	if err != nil {
-		log.Warn(err.Error())
-	} else {
-		clientInfo.OsInfo.Ver = osVer
-	}
+
+	//客户端版本获取时不正确，暂时屏蔽此数据（Win10验证失败）
+	//clientInfo.OsInfo.Name = goToolEnvironment.GetOsName()
+	//osVer, err := goToolEnvironment.GetOsVer()
+	//if err != nil {
+	//	log.Warn(err.Error())
+	//} else {
+	//	clientInfo.OsInfo.Ver = osVer
+	//}
+
 	hostName, err := goToolEnvironment.GetHostName()
 	if err != nil {
 		log.Warn(err.Error())

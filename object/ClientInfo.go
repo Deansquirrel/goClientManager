@@ -8,9 +8,9 @@ type ClientInfo struct {
 }
 
 type osInfo struct {
-	Type     string `json:"type"`
-	Name     string `json:"name"`
-	Ver      string `json:"ver"`
+	Type string `json:"type"`
+	//Name     string `json:"name"`
+	//Ver      string `json:"ver"`
 	HostName string `json:"hostname"`
 }
 
